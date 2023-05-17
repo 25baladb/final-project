@@ -2,10 +2,7 @@ public class SteppingStones {
     private int x;
     private int y;
 
-    public SteppingStones(int x, int y){
-        super();
-        this.x = x;
-        this.y = y;
+    public SteppingStones(){
         x = 1180;
         y = (int)(Math.random() * 145) + 400;
     }
@@ -17,6 +14,9 @@ public class SteppingStones {
     public int getY(){
         return y;
     }
-    ellipse(x, y, 60, 60);
+
+    public void display(){
+        Main.app.ellipse(x, y, 60, 60);
+    }
 
 }

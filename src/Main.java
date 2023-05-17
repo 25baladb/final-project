@@ -20,7 +20,7 @@ public class Main extends PApplet{
         background(135, 225, 250);
         //clouds();
         //drawGrass();
-        new SteppingStones();
+        new SteppingStones;
 
     }
 
