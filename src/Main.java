@@ -2,6 +2,7 @@ import processing.core.PApplet;
 public class Main extends PApplet{
 
     public static PApplet app;
+    Player bala;
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -16,16 +17,26 @@ public class Main extends PApplet{
         size(1200, 600);
     }
 
-    public void draw() {
+    public void setup(){
         background(135, 225, 250);
-        //clouds();
-        //drawGrass();
-        new SteppingStones;
+        clouds();
+        drawGrass();
+        SteppingStones firstStone = new SteppingStones();
+        firstStone.display();
+        bala = new Player();
+        bala.display();
+    }
+
+    public void draw() {
 
     }
 
 
-
+    public void keyPressed(){
+        if(keyCode == 65535){
+            Jump(bala.getY());
+        }
+    }
 
 
 
