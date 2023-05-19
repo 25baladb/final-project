@@ -5,9 +5,9 @@ public class Obstacle {
     int s;
 
     public Obstacle(){
-        x = (int)(Math.random() * 1200);
+        x = (int)(Math.random() * 1100) + 100;
         y = (int) (Math.random() * 200) + 400;
-        s = (int)(Math.random() * 110) + 40;
+        s = (int)(Math.random() * 60) + 40;
     }
 
     public int getX(){

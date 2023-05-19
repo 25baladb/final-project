@@ -26,9 +26,12 @@ public class Main extends PApplet{
     }
 
     public void draw() {
+        background(135, 225, 250);
+        text("Use w to jump up onto the stones. Watch out for the bubbles!", 200, 250);
+        //pause
+        background(135, 225, 250);
         clouds();
         drawGrass();
-        background(135, 225, 250);
         jumpingMan.display();
         bubble.display();
         firstStone.display();
@@ -37,23 +40,30 @@ public class Main extends PApplet{
 
 
     public void keyPressed(){
-        if(keyCode == 65535){
+        if(key == 'w'){
             Jump(jumpingMan.getY());
             jumpingMan.display();
         }
     }
 
-    public void Jump(int moveY){
+    public void Jump(float moveY){
         moveY -= 20;
         jumpingMan.setY(moveY);
         jumpingMan.display();
+        //pause
+        /*while(moveY != 570){
+            jumpingMan.setY(moveY);
+            jumpingMan.display();
+            moveY += 0.001;
+
+        }*/
     }
 
     public void clouds() {
         fill(255);
         noStroke();
         int c = 0;
-        while(c <= 10) {
+        while(c <= 5) {
             int x1 = (int) (Math.random() * 1200);
             int y = (int) (Math.random() * 50) + 30;
             ellipse(x1, y, 60, 35);

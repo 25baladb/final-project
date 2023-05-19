@@ -1,7 +1,7 @@
 public class Player {
 
     int x;
-    int y;
+    float y;
 
     public Player(){
         x = 15;
@@ -12,7 +12,7 @@ public class Player {
         return x;
     }
 
-    public int getY(){
+    public float getY(){
         return y;
     }
 
@@ -20,7 +20,7 @@ public class Player {
         x = newX;
     }
 
-    public void setY(int newY){
+    public void setY(float newY){
         y = newY;
     }
     public void display(){
