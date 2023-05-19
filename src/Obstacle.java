@@ -17,6 +17,7 @@ public class Obstacle {
     public int getY(){
         return y;
     }
+
     public int getSize(){
         return s;
     }

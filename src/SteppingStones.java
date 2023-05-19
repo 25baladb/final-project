@@ -16,7 +16,18 @@ public class SteppingStones {
     }
 
     public void display(){
+        Main.app.fill(109, 114, 115);
+        Main.app.strokeWeight(2);
+        Main.app.stroke(46, 51,51);
         Main.app.ellipse(x, y, 60, 60);
+    }
+
+    public void move(){
+        while(x >= 0){
+            x--;
+            display();
+            Main.app.redraw();
+        }
     }
 
 }
