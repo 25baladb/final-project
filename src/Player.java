@@ -5,7 +5,7 @@ public class Player {
 
     public Player(){
         x = 15;
-        y = 570;
+        y = 300;
     }
 
     public int getX(){

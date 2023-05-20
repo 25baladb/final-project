@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9707b15a-88b9-4ea1-8458-8ab8e3fabd07" name="Changes" comment="changed jump to method, added moving stepping stones but need to slow down">
+    <list default="true" id="9707b15a-88b9-4ea1-8458-8ab8e3fabd07" name="Changes" comment="fixed jump, working on jump physics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Obstacle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SteppingStones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SteppingStones.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684472431316</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixed jump, working on jump physics">
+      <created>1684534826164</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684534826164</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -100,6 +108,7 @@
     <MESSAGE value="began class for randomly generated stones and added some quick graphics" />
     <MESSAGE value="added classes player, jump, and obstacle, and am working on the jumping function right now" />
     <MESSAGE value="changed jump to method, added moving stepping stones but need to slow down" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed jump to method, added moving stepping stones but need to slow down" />
+    <MESSAGE value="fixed jump, working on jump physics" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed jump, working on jump physics" />
   </component>
 </project>

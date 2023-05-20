@@ -6,6 +6,8 @@ public class Main extends PApplet{
     SteppingStones firstStone;
     Obstacle bubble;
 
+    public float jumpingSpeed = 0.05f;
+
     public static void main(String[] args) {
         PApplet.main("Main");
     }
@@ -28,7 +30,7 @@ public class Main extends PApplet{
     public void draw() {
         background(135, 225, 250);
         text("Use w to jump up onto the stones. Watch out for the bubbles!", 200, 250);
-        //pause
+        //Main.app.delay(5000);
         background(135, 225, 250);
         clouds();
         drawGrass();
@@ -41,22 +43,27 @@ public class Main extends PApplet{
 
     public void keyPressed(){
         if(key == 'w'){
-            Jump(jumpingMan.getY());
-            jumpingMan.display();
+            jump();
         }
     }
 
-    public void Jump(float moveY){
-        moveY -= 20;
-        jumpingMan.setY(moveY);
-        jumpingMan.display();
-        //pause
-        /*while(moveY != 570){
-            jumpingMan.setY(moveY);
+    public void jump(){
+        int i = 0;
+        while(i <= 5){
+            jumpingMan.setY(jumpingMan.getY() - jumpingSpeed);
             jumpingMan.display();
-            moveY += 0.001;
+            Main.app.delay(500);
+            i++;
+        }
+        Main.app.delay(1000);
+        //fall();
+    }
 
-        }*/
+    public void fall(){
+        while(jumpingMan.getY() + 30 <= 600) {
+            jumpingMan.setY(jumpingMan.getY() + jumpingSpeed);
+            jumpingMan.display();
+        }
     }
 
     public void clouds() {
