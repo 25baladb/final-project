@@ -23,9 +23,9 @@ public class SteppingStones {
     }
 
     public void move(){
-        while(x >= 0){
+        while(x >= -31){
             x--;
-            //Main.app.delay(500);
+            //sleep
             display();
             Main.app.redraw();
         }

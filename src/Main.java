@@ -1,10 +1,14 @@
 import processing.core.PApplet;
+
+import static java.lang.Thread.sleep;
+
 public class Main extends PApplet{
 
     public static PApplet app;
     Player jumpingMan;
     SteppingStones firstStone;
     Obstacle bubble;
+    private boolean startingScreen = true;
 
     public float jumpingSpeed = 0.05f;
 
@@ -28,9 +32,13 @@ public class Main extends PApplet{
     }
 
     public void draw() {
-        background(135, 225, 250);
-        text("Use w to jump up onto the stones. Watch out for the bubbles!", 200, 250);
-        //Main.app.delay(5000);
+        if(startingScreen){
+            background(135, 225, 250);
+            textSize(40);
+            text("Use space to jump up onto the stones. Watch out for the bubbles!", 50, 250);
+            //sleep(5000)
+            startingScreen = false;
+        }
         background(135, 225, 250);
         clouds();
         drawGrass();
@@ -42,28 +50,43 @@ public class Main extends PApplet{
 
 
     public void keyPressed(){
-        if(key == 'w'){
+        if(key == ' '){
             jump();
         }
     }
 
     public void jump(){
         int i = 0;
-        while(i <= 5){
+        while(i <= 50){
             jumpingMan.setY(jumpingMan.getY() - jumpingSpeed);
-            jumpingMan.display();
-            Main.app.delay(500);
+            double xx = (double)(jumpingMan.getX() - bubble.getX());
+            double yy = (double)(jumpingMan.getY() + 20 - bubble.getY());
+            if(Math.pow(xx, 2) + Math.pow(yy, 2) <= Math.pow(bubble.getSize(), 2)){
+                dead();
+            }
+            else {
+                jumpingMan.display();
+            }
+            //sleep
             i++;
         }
-        Main.app.delay(1000);
+        //sleep
         //fall();
     }
 
     public void fall(){
-        while(jumpingMan.getY() + 30 <= 600) {
+        while(jumpingMan.getY() + 30 <= 580) {
             jumpingMan.setY(jumpingMan.getY() + jumpingSpeed);
             jumpingMan.display();
         }
+    }
+
+    public void dead(){
+        //calculate score
+        background(99, 99, 99);
+        stroke(0);
+        text("Oh no! You died :(", 250, 550);
+        text("Your score was: ", 300, 580);
     }
 
     public void clouds() {

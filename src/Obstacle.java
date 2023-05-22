@@ -18,15 +18,18 @@ public class Obstacle {
         return y;
     }
 
-    public int getSize(){
-        return s;
+    public double getSize(){
+        return (double)s;
     }
+
+    public void move(){}
 
     public void display(){
         Main.app.fill(174, 235, 250);
         Main.app.strokeWeight(0.5f);
         Main.app.stroke(21, 18, 107);
-        Main.app.ellipse(x, y, s, s);
+        //Main.app.ellipse(x, y, s, s);
+        Main.app.ellipse(20, 530, 60, 60);
     }
 
 }
