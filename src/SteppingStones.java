@@ -22,13 +22,17 @@ public class SteppingStones {
         Main.app.ellipse(x, y, 60, 60);
     }
 
-    public void move(){
-        while(x >= -31){
-            x--;
-            //sleep
-            display();
-            Main.app.redraw();
-        }
+    public void setX(int newX){
+        x = newX;
     }
+
+//    public void move(){
+//        if(steppingStone.getX() >= 100){
+//            x--;
+//            Main.app.frameRate(1);
+//            display();
+//            Main.app.redraw();
+//        }
+//    }
 
 }

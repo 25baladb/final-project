@@ -8,7 +8,7 @@ public class Main extends PApplet{
     Player jumpingMan;
     SteppingStones firstStone;
     Obstacle bubble;
-    private boolean startingScreen = true;
+    private boolean startingScreen/* = true*/;
 
     public float jumpingSpeed = 0.05f;
 
@@ -26,6 +26,7 @@ public class Main extends PApplet{
     }
 
     public void setup(){
+        frameRate(5);
         firstStone = new SteppingStones();
         jumpingMan = new Player();
         bubble = new Obstacle();
@@ -40,38 +41,45 @@ public class Main extends PApplet{
             startingScreen = false;
         }
         background(135, 225, 250);
-        clouds();
-        drawGrass();
+        //clouds();
+        //drawGrass();
         jumpingMan.display();
         bubble.display();
         firstStone.display();
-        firstStone.move();
+        if(firstStone.getX() >= 100){
+            firstStone.setX(firstStone.getX()-1);
+            firstStone.display();
+            //Main.app.redraw();
+        }
+        //firstStone.move();
     }
 
 
     public void keyPressed(){
         if(key == ' '){
+            frameRate(5);
             jump();
+            frameRate(60);
         }
     }
 
     public void jump(){
         int i = 0;
-        while(i <= 50){
-            jumpingMan.setY(jumpingMan.getY() - jumpingSpeed);
-            double xx = (double)(jumpingMan.getX() - bubble.getX());
-            double yy = (double)(jumpingMan.getY() + 20 - bubble.getY());
-            if(Math.pow(xx, 2) + Math.pow(yy, 2) <= Math.pow(bubble.getSize(), 2)){
-                dead();
-            }
-            else {
-                jumpingMan.display();
-            }
-            //sleep
-            i++;
-        }
+//        while(i <= 50){
+//            jumpingMan.setY(jumpingMan.getY() - jumpingSpeed);
+//            double xx = (double)(jumpingMan.getX() - bubble.getX());
+//            double yy = (double)(jumpingMan.getY() + 20 - bubble.getY());
+//            if(Math.pow(xx, 2) + Math.pow(yy, 2) <= Math.pow(bubble.getSize(), 2)){
+//                dead();
+//            }
+//            else {
+//                jumpingMan.display();
+//            }
+//            //sleep
+//            i++;
+//        }
         //sleep
-        //fall();
+        fall();
     }
 
     public void fall(){
