@@ -2,10 +2,11 @@ public class Player {
 
     int x;
     float y;
-
+    int s;
     public Player(){
         x = 15;
-        y = 540;
+        y = 570;
+        s = 30;
     }
 
     public int getX(){
@@ -14,6 +15,9 @@ public class Player {
 
     public float getY(){
         return y;
+    }
+    public int getRadius(){
+        return s;
     }
 
     public void setX(int newX){
@@ -26,7 +30,7 @@ public class Player {
     public void display(){
         Main.app.fill(0);
         Main.app.noStroke();
-        Main.app.rect(x, y, 20, 30);
+        Main.app.ellipse(x, y, s, s);
     }
 
 }

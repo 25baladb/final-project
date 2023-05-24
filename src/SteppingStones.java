@@ -26,13 +26,4 @@ public class SteppingStones {
         x = newX;
     }
 
-//    public void move(){
-//        if(steppingStone.getX() >= 100){
-//            x--;
-//            Main.app.frameRate(1);
-//            display();
-//            Main.app.redraw();
-//        }
-//    }
-
 }

@@ -7,8 +7,9 @@ public class Main extends PApplet{
     public static PApplet app;
     Player jumpingMan;
     SteppingStones firstStone;
+    private boolean dead = false;
     Obstacle bubble;
-    private boolean startingScreen/* = true*/;
+    private boolean startingScreen = true;
 
     public float jumpingSpeed = 0.05f;
 
@@ -26,7 +27,7 @@ public class Main extends PApplet{
     }
 
     public void setup(){
-        frameRate(5);
+        frameRate(10);
         firstStone = new SteppingStones();
         jumpingMan = new Player();
         bubble = new Obstacle();
@@ -35,23 +36,27 @@ public class Main extends PApplet{
     public void draw() {
         if(startingScreen){
             background(135, 225, 250);
-            textSize(40);
-            text("Use space to jump up onto the stones. Watch out for the bubbles!", 50, 250);
-            //sleep(5000)
-            startingScreen = false;
-        }
-        background(135, 225, 250);
-        //clouds();
-        //drawGrass();
-        jumpingMan.display();
-        bubble.display();
-        firstStone.display();
-        if(firstStone.getX() >= 100){
-            firstStone.setX(firstStone.getX()-1);
+            textSize(30);
+            text("Use space to jump up onto the stones. Press any key to play. Watch out for the bubbles!", 50, 250);
+        } else {
+            background(135, 225, 250);
+            clouds();
+            drawGrass();
+            jumpingMan.display();
+            bubble.display();
             firstStone.display();
-            //Main.app.redraw();
+            if (firstStone.getX() >= -31) {
+                firstStone.setX(firstStone.getX() - 1);
+                firstStone.display();
+            }
+            if(dead){
+                //calculate score
+                background(99, 99, 99);
+                stroke(0);
+                text("Oh no! You died :(", 250, 550);
+                text("Your score was: ", 300, 580);
+            }
         }
-        //firstStone.move();
     }
 
 
@@ -61,25 +66,26 @@ public class Main extends PApplet{
             jump();
             frameRate(60);
         }
+        if(keyPressed){
+            startingScreen = false;
+        }
     }
 
     public void jump(){
         int i = 0;
-//        while(i <= 50){
-//            jumpingMan.setY(jumpingMan.getY() - jumpingSpeed);
-//            double xx = (double)(jumpingMan.getX() - bubble.getX());
-//            double yy = (double)(jumpingMan.getY() + 20 - bubble.getY());
-//            if(Math.pow(xx, 2) + Math.pow(yy, 2) <= Math.pow(bubble.getSize(), 2)){
-//                dead();
-//            }
-//            else {
-//                jumpingMan.display();
-//            }
-//            //sleep
-//            i++;
-//        }
-        //sleep
-        fall();
+        while(i <= 100){
+            jumpingMan.setY(jumpingMan.getY() - jumpingSpeed);
+            if(dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()) <= bubble.getSize() + jumpingMan.getRadius()){
+                //jumpingMan.display();
+                System.out.println("you died");
+                dead = true;
+            }
+            else {
+                jumpingMan.display();
+            }
+            i++;
+        }
+        fall();//eventually only call from else in if-else statement with character landing on stepping stone
     }
 
     public void fall(){
@@ -87,14 +93,6 @@ public class Main extends PApplet{
             jumpingMan.setY(jumpingMan.getY() + jumpingSpeed);
             jumpingMan.display();
         }
-    }
-
-    public void dead(){
-        //calculate score
-        background(99, 99, 99);
-        stroke(0);
-        text("Oh no! You died :(", 250, 550);
-        text("Your score was: ", 300, 580);
     }
 
     public void clouds() {
