@@ -11,25 +11,25 @@ public class Obstacle {
     }
 
     public int getX(){
+        System.out.println("x: " + x);
         return x;
     }
 
     public int getY(){
+        System.out.println("y: " + y);
         return y;
     }
 
-    public double getSize(){
-        return (double)s;
+    public int getSize(){
+        System.out.println("s: " + s);
+        return s;
     }
-
-    public void move(){}
 
     public void display(){
         Main.app.fill(174, 235, 250);
         Main.app.strokeWeight(0.5f);
         Main.app.stroke(21, 18, 107);
-        //Main.app.ellipse(x, y, s, s);
-        Main.app.ellipse(20, 530, 60, 60);
+        Main.app.ellipse(x, y, s, s);
     }
 
 }

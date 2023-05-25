@@ -4,19 +4,22 @@ public class Player {
     float y;
     int s;
     public Player(){
-        x = 15;
-        y = 570;
+        x = 25;
+        y = 580;
         s = 30;
     }
 
     public int getX(){
+        System.out.println("x: " + x);
         return x;
     }
 
     public float getY(){
+        System.out.println("y: " + y);
         return y;
     }
     public int getRadius(){
+        System.out.println("s: " + s);
         return s;
     }
 
