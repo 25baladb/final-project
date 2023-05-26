@@ -6,24 +6,26 @@ public class Obstacle {
 
     public Obstacle(){
         x = (int)(Math.random() * 1100) + 100;
-        y = (int) (Math.random() * 200) + 400;
+        y = (int) (Math.random() * 600);
         s = (int)(Math.random() * 60) + 40;
     }
 
     public int getX(){
-        System.out.println("x: " + x);
         return x;
     }
 
     public int getY(){
-        System.out.println("y: " + y);
         return y;
     }
 
     public int getSize(){
-        System.out.println("s: " + s);
         return s;
     }
+
+    public void setX(int newX){
+        x = newX;
+    }
+
 
     public void display(){
         Main.app.fill(174, 235, 250);

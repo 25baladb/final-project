@@ -1,16 +1,19 @@
 import processing.core.PApplet;
 
-import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 
 public class Main extends PApplet{
 
     public static PApplet app;
     Player jumpingMan;
-    SteppingStones firstStone;
+    ArrayList<SteppingStones> stones;
     private boolean dead = false;
+    private boolean up = false;
+    ArrayList<Obstacle> bubbles;
     Obstacle bubble;
     private boolean startingScreen = true;
     public boolean jump = false;
+    private boolean fall = false;
     private int drawCounter;
 
     public static void main(String[] args) {
@@ -27,58 +30,75 @@ public class Main extends PApplet{
     }
 
     public void setup(){
-        frameRate(10);
-        firstStone = new SteppingStones();
+        frameRate(45);
         jumpingMan = new Player();
         bubble = new Obstacle();
+        bubbles = new ArrayList<Obstacle>();
+        stones = new ArrayList<SteppingStones>();
+        for(int i = 0; i <= 10; i++){
+            bubbles.add(new Obstacle());
+        }
+
     }
 
     public void draw() {
         if(startingScreen){
             background(135, 225, 250);
-            textSize(30);
-            text("Use space to jump up onto the stones. Press any key to play. Watch out for the bubbles!", 50, 250);
+            textSize(25);
+            text("Use space to go down and u to go up. Press any key to play. Watch out for the bubbles and rocks!", 50, 250);
         } else {
             drawCounter++;
+            System.out.println(drawCounter);
             background(135, 225, 250);
             clouds();
             drawGrass();
-            bubble.display();
-            firstStone.display();
-            jumpingMan.display();
-            if (firstStone.getX() >= -31) {
-                firstStone.setX(firstStone.getX() - 1);
-                firstStone.display();
+            for(int i = 0; i < bubbles.size(); i++){
+                bubbles.get(i).display();
             }
+            if(drawCounter % 40 == 0) {
+                stones.add(new SteppingStones());
+            }
+            for(int i = 0; i < stones.size(); i++){
+                stones.get(i).setX(stones.get(i).getX() - 3);
+                stones.get(i).display();
+                if(stones.get(i).getX() == -31){
+                    stones.remove(i);
+                    i--;
+                }
+                if(dist(jumpingMan.getX(), jumpingMan.getY(), stones.get(i).getX(), stones.get(i).getY()) <= 15 + jumpingMan.getRadius()/2){
+                    dead = true;
+                }
+            }
+            if (dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()) <= bubble.getSize() / 2 + jumpingMan.getRadius() / 2) {
+                dead = true;
+            }
+            jumpingMan.display();
             if(dead){
-                //calculate score
                 background(99, 99, 99);
                 stroke(0);
-                text("Oh no! You died :(", 550, 250);
-                text("Your score was: ", 580, 300);
+                text("Oh no! You died :(", 590, 200);
             }
-            if(jump){
-                System.out.println(1);
-                int i = 0;
-                while(i <= 40){
-                    jumpingMan.setY(jumpingMan.getY() - 1);
-                    System.out.println(2);
-                    System.out.println(dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()));
-                    System.out.println(bubble.getSize()/2 + jumpingMan.getRadius()/2);
+            if(jumpingMan.getY() >= 50){
+                jumpingMan.setY(jumpingMan.getY() - 1);
                     if(dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()) <= bubble.getSize()/2 + jumpingMan.getRadius()/2){
-                        System.out.println("you died");
                         dead = true;
                     }
-                    else {
-                        System.out.println(3);
-                        jumpingMan.display();
-                    }
+                jump = false;
+            }
+            if(fall){
+                int i = 0;
+                while(i <= 50) {
+                    jumpingMan.setY(jumpingMan.getY() + 1);
                     i++;
                 }
-                jump = false;
-//                if(player touches steppingStone){
-//                    fall;
-//                }
+                fall = false;
+            }
+            if(up){
+                int j = 0;
+                while(j <= 50){
+                    jumpingMan.setY(jumpingMan.getY() - 1);
+                }
+                up = false;
             }
         }
     }
@@ -86,22 +106,16 @@ public class Main extends PApplet{
 
     public void keyPressed(){
         if(key == ' '){
-            frameRate(5);
-            jump = true;
-            frameRate(60);
+            fall = true;
+        }
+        if(key == 'u'){
+            up = true;
         }
         if(keyPressed){
             startingScreen = false;
         }
     }
 
-
-    public void fall(){
-        while(jumpingMan.getY() + 30 <= 580) {
-            jumpingMan.setY(jumpingMan.getY() + 1);
-            jumpingMan.display();
-        }
-    }
 
     public void clouds() {
         fill(255);

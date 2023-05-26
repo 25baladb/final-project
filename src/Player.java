@@ -5,21 +5,18 @@ public class Player {
     int s;
     public Player(){
         x = 25;
-        y = 580;
+        y = 520;
         s = 30;
     }
 
     public int getX(){
-        System.out.println("x: " + x);
         return x;
     }
 
     public float getY(){
-        System.out.println("y: " + y);
         return y;
     }
     public int getRadius(){
-        System.out.println("s: " + s);
         return s;
     }
 
@@ -31,9 +28,14 @@ public class Player {
         y = newY;
     }
     public void display(){
-        Main.app.fill(0);
+        Main.app.fill(235, 192, 52);
         Main.app.noStroke();
         Main.app.ellipse(x, y, s, s);
+        Main.app.fill(0);
+        Main.app.ellipse(x - 5, y - 5, 5, 5);
+        Main.app.ellipse(x + 5, y - 5, 5, 5);
+        Main.app.strokeWeight(4);
+        Main.app.line(x - 5, y + 5, x + 5, y + 5);
     }
 
 }
