@@ -8,6 +8,7 @@ public class Main extends PApplet{
     Player jumpingMan;
     ArrayList<SteppingStones> stones;
     private boolean dead = false;
+    private int speed = 0;
     private int points = 0;
     private boolean up = false;
     ArrayList<Obstacle> bubbles;
@@ -32,6 +33,8 @@ public class Main extends PApplet{
     public void setup(){
         frameRate(45);
         jumpingMan = new Player();
+        bubbles = new ArrayList<Obstacle>();
+        stones = new ArrayList<SteppingStones>();
     }
 
     public void draw() {
@@ -51,20 +54,22 @@ public class Main extends PApplet{
             if(drawCounter % 60 == 0){
                 bubbles.add(new Obstacle());
             }
-            for(int i = 0; i < bubbles.size(); i++){
-                bubbles.get(i).setX(bubbles.get(i).getX() - 1);
-                bubbles.get(i).display();
-                if(bubbles.get(i).getX() == bubbles.get(i).getSize()/2 * -1){
-                    bubbles.remove(i);
-                    i--;
-                }
-                if (dist(jumpingMan.getX(), jumpingMan.getY(), bubbles.get(i).getX(), bubbles.get(i).getY()) <= bubbles.get(i).getSize() / 2 + jumpingMan.getRadius() / 2) {
-                    points += 10;
-                }
+//            for(int i = 0; i < bubbles.size(); i++){
+//                bubbles.get(i).setX(bubbles.get(i).getX() - 1);
+//                bubbles.get(i).display();
+//                if (dist(jumpingMan.getX(), jumpingMan.getY(), bubbles.get(i).getX(), bubbles.get(i).getY()) <= bubbles.get(i).getSize() / 2 + jumpingMan.getRadius() / 2) {
+//                    points += 10;
+//                }
+//                if(bubbles.get(i).getX() == bubbles.get(i).getSize()/2 * -1){
+//                    bubbles.remove(i);
+//                    i--;
+//                }
+//            }
+            if((drawCounter ^ 100) == 0){
+                speed += 3;
             }
-
             for(int i = 0; i < stones.size(); i++){
-                stones.get(i).setX(stones.get(i).getX() - 3);
+                stones.get(i).setX(stones.get(i).getX() - speed);
                 stones.get(i).display();
                 if(stones.get(i).getX() == -31){
                     stones.remove(i);
@@ -79,7 +84,7 @@ public class Main extends PApplet{
                 background(99, 99, 99);
                 stroke(0);
                 text("Oh no! You died :(", 590, 200);
-                text("Your points: " + points, 590, 250);
+                //text("Your points: " + points, 590, 250);
             }
             if(jumpingMan.getY() >= 50){
                 jumpingMan.setY(jumpingMan.getY() - 1);

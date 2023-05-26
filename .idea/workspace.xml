@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9707b15a-88b9-4ea1-8458-8ab8e3fabd07" name="Changes" comment="cleaned up code">
+    <list default="true" id="9707b15a-88b9-4ea1-8458-8ab8e3fabd07" name="Changes" comment="cleaned up code + fixed other bug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685133364636</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="cleaned up code + fixed other bug">
+      <created>1685133675699</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685133675704</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +178,7 @@
     <MESSAGE value="fixed statement in wrong place" />
     <MESSAGE value="fixed bug for not jumping, allowed users to get points from moving bubbles" />
     <MESSAGE value="cleaned up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up code" />
+    <MESSAGE value="cleaned up code + fixed other bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up code + fixed other bug" />
   </component>
 </project>
