@@ -54,6 +54,9 @@ public class Main extends PApplet{
             drawGrass();
             for(int i = 0; i < bubbles.size(); i++){
                 bubbles.get(i).display();
+                if (dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()) <= bubble.getSize() / 2 + jumpingMan.getRadius() / 2) {
+                    dead = true;
+                }
             }
             if(drawCounter % 40 == 0) {
                 stones.add(new SteppingStones());
@@ -68,9 +71,6 @@ public class Main extends PApplet{
                 if(dist(jumpingMan.getX(), jumpingMan.getY(), stones.get(i).getX(), stones.get(i).getY()) <= 15 + jumpingMan.getRadius()/2){
                     dead = true;
                 }
-            }
-            if (dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()) <= bubble.getSize() / 2 + jumpingMan.getRadius() / 2) {
-                dead = true;
             }
             jumpingMan.display();
             if(dead){
