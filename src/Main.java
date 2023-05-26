@@ -11,7 +11,6 @@ public class Main extends PApplet{
     private int points = 0;
     private boolean up = false;
     ArrayList<Obstacle> bubbles;
-    Obstacle bubble;
     private boolean startingScreen = true;
     public boolean jump = false;
     private boolean fall = false;
@@ -33,10 +32,6 @@ public class Main extends PApplet{
     public void setup(){
         frameRate(45);
         jumpingMan = new Player();
-        bubble = new Obstacle();
-        bubbles = new ArrayList<Obstacle>();
-        stones = new ArrayList<SteppingStones>();
-
     }
 
     public void draw() {
@@ -63,7 +58,7 @@ public class Main extends PApplet{
                     bubbles.remove(i);
                     i--;
                 }
-                if (dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()) <= bubble.getSize() / 2 + jumpingMan.getRadius() / 2) {
+                if (dist(jumpingMan.getX(), jumpingMan.getY(), bubbles.get(i).getX(), bubbles.get(i).getY()) <= bubbles.get(i).getSize() / 2 + jumpingMan.getRadius() / 2) {
                     points += 10;
                 }
             }
@@ -88,9 +83,6 @@ public class Main extends PApplet{
             }
             if(jumpingMan.getY() >= 50){
                 jumpingMan.setY(jumpingMan.getY() - 1);
-                    if(dist(jumpingMan.getX(), jumpingMan.getY(), bubble.getX(), bubble.getY()) <= bubble.getSize()/2 + jumpingMan.getRadius()/2){
-                        dead = true;
-                    }
                 jump = false;
             }
             if(fall){
